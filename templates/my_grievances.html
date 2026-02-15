@@ -1,0 +1,13 @@
+<h2>My Grievances</h2>
+
+{% for grievance in grievances %}
+    <div>
+        <h3>{{ grievance.title }}</h3>
+        <p>{{ grievance.description }}</p>
+        <p>Status: {{ grievance.status }}</p>
+        {% if grievance.updated_at %}
+            <p><small>Last Updated: {{ grievance.updated_at.strftime("%d %b %Y, %I:%M %p") }}</small></p>
+        {% endif %}
+        <hr>
+    </div>
+{% endfor %}

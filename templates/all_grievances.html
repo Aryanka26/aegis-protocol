@@ -1,0 +1,25 @@
+<h2>All Grievances (Authority View)</h2>
+
+{% for grievance in grievances %}
+    <div>
+        <h3>{{ grievance.title }}</h3>
+        <p>{{ grievance.description }}</p>
+        <p>Category: {{ grievance.category }}</p>
+        <p>Status: {{ grievance.status }}</p>
+        {% if grievance.updated_at %}
+            <p><small>Last Updated: {{ grievance.updated_at.strftime("%d %b %Y, %I:%M %p") }}</small></p>
+        {% endif %}
+
+
+        <form method="POST" action="/update-status/{{ grievance.id }}">
+            <select name="status">
+                <option value="Pending">Pending</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+
+        <hr>
+    </div>
+{% endfor %}

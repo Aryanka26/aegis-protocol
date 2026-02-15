@@ -4,11 +4,12 @@ import os
 from extensions import db, login_manager, bcrypt
 
 from routes.dashboard import dashboard
-
+from routes.grievance import grievance
 
 load_dotenv()
 
 app = Flask(__name__)
+app.register_blueprint(grievance)
 app.register_blueprint(dashboard)
 app.config['SECRET_KEY'] = os.getenv("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aegis.db'
